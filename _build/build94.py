@@ -31,6 +31,11 @@ HEAD = """<!DOCTYPE html>
 
 DATA = json.load(open(f"{S}/data94.json", encoding="utf-8"))
 css, template = read("style94.css"), read("body94.html")
+COLOR = json.load(open(f"{S}/color94.json", encoding="utf-8"))          # colour tokens decided by _build/color_decisions94.js (Color Intelligence Engine)
+assert css.count("/*__COLOR_TOKENS__*/") == 1, "style94.css needs the colour placeholder"
+css = css.replace("/*__COLOR_TOKENS__*/", COLOR["css"])
+stale = sorted(set(re.findall(r"var\(--(h-[a-z]+|up|down|hatch-bus|hatch-car|hatch-down)\)", css + template + read("app94.js"))))
+assert not stale, f"old colour tokens still used: {stale}"
 P = json.load(open(f"{S}/paras94.json", encoding="utf-8"))
 raw = dict(P["paras"])
 e = I18.esc

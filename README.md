@@ -33,3 +33,17 @@ Light-touch interaction layer; the look is unchanged. IDs refer to the manual (C
 - **Keeps the reader's place (DS-06):** changing language keeps the paragraph or figure at the reading line, and an open data table stays open.
 - **Targets and motion (DS-07/10):** controls are 44 px on touch; `prefers-reduced-motion` already switches reveal animations and smooth scrolling off; `overflow-x: clip` (not `hidden`) on `html` and `body` so `position: sticky` works.
 - Not claimed: WCAG conformance, screen-reader audit, contrast of every pair, user testing. The browser checks only cover keyboard-independent behaviour, overflow, text size and language.
+
+## Colour (BRAND/SISTEMA 01/COLOR — Color Intelligence Engine)
+The colours of the charts are decided by the engine, not picked by hand. Order of work: variable → role → family → palette → checks → record.
+```bash
+node _build/color_decisions94.js          # engine + Scientific Colour Maps → _build/color94.json and _build/COLOR_DECISIONS.md
+python -X utf8 _build/build94.py _build . # injects the tokens into the page (the build stops if an old colour token is still used)
+```
+- **Roles (COL-04):** data categorical (subject: cars · stations · price · trucks · buses; region: AP · EMEA · Americas; kind of milestone: exit · bet), data diverging with a declared centre of 0 (sign of a change), semantic UI (status), neutral (base bar, target marker, dates), brand (`--accent`, links and navigation; kept apart from data).
+- **One palette per variable** so two variables never share a colour (`batlowS`, `naviaS`, `hawaiiS`); the diverging palette for change is `managua`.
+- **Our rule on top:** every mark must reach 3:1 on the three surfaces it sits on (WCAG 1.4.11). The engine’s categorical lists include very dark colours made for light backgrounds, so those are skipped before picking (recorded per decision). Coloured text reaches 4.5:1 (measured in the record).
+- **Not colour alone (COL-07):** values and names are written; hatching marks a state of the same variable (commercial figure, threshold, approved or planned, out of service); the timeline also changes the marker shape.
+- No chart colours a continuous value, so no sequential scale is needed; missing data is a dash or ND, never a zero (COL-02).
+- Vendored in `_build/vendor/`: `color-engine.js`, `scm9-catalog.js` and `SCM9-LICENSE.txt` (Scientific Colour Maps 9.0, Fabio Crameri, MIT; credit in the page footer). Tests: `tests/test_color_tokens.py`.
+- Not validated: colour-vision simulation, print, and reading tests with people (listed in `COLOR_DECISIONS.md`).

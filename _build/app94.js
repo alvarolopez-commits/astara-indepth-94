@@ -78,18 +78,18 @@ function renderCars(){
   // A: 2025 by market (the China figure is "commercial" in the source) and B: 2025 by brand share one scale
   const X8 = v => v / 8000, T8 = [0, 2000, 4000, 6000, 8000], f8 = v => fmt(v);
   $('v02a').innerHTML = rowsBox(T8, X8, tp('chart.car.ariaA') + ' ' + C.A.map(d => `${tp(d.label)} ${fmt(d.v)}`).join('; ')) +
-    C.A.map((d,i) => row(i, d, X8, d.commercial ? 'var(--hatch-car)' : 'var(--h-car)', d.commercial ? t('chart.car.commercial') : '', '', flag(FA[d.id]))).join('') + '</div>' + axis(T8, X8, f8);
+    C.A.map((d,i) => row(i, d, X8, d.commercial ? 'var(--hatch-cars)' : 'var(--c-cars)', d.commercial ? t('chart.car.commercial') : '', '', flag(FA[d.id]))).join('') + '</div>' + axis(T8, X8, f8);
   $('v02b').innerHTML = rowsBox(T8, X8, tp('chart.car.ariaB') + ' ' + C.B.map(d => `${tp(d.label)} ${fmt(d.v)}${d.delta == null ? '' : ' ' + pct(d.delta)}`).join('; ')) +
-    C.B.map((d,i) => row(i, d, X8, 'var(--h-car)', '')).join('') + '</div>' + axis(T8, X8, f8);
+    C.B.map((d,i) => row(i, d, X8, 'var(--c-cars)', '')).join('') + '</div>' + axis(T8, X8, f8);
   // C: first half of 2026 against the first half of 2025
   const X5 = v => v / 5000, T5 = [0, 1000, 2000, 3000, 4000, 5000];
   $('v02c').innerHTML = rowsBox(T5, X5, tp('chart.car.ariaC') + ' ' + C.C.map(d => `${tp(d.label)} ${fmt(d.v)}${d.delta == null ? '' : ' ' + pct(d.delta)}`).join('; ')) +
-    C.C.map((d,i) => row(i, d, X5, i === 0 ? 'var(--txt-muted)' : (d.id === 'C5' ? 'var(--hatch-car)' : 'var(--h-car)'), d.id === 'C5' ? t('chart.car.commercial') : '', i === 1 ? 'row--sep' : '')).join('') + '</div>' + axis(T5, X5, f8);
+    C.C.map((d,i) => row(i, d, X5, i === 0 ? 'var(--n-series)' : (d.id === 'C5' ? 'var(--hatch-cars)' : 'var(--c-cars)'), d.id === 'C5' ? t('chart.car.commercial') : '', i === 1 ? 'row--sep' : '')).join('') + '</div>' + axis(T5, X5, f8);
 }
 
 /* ================= V03 — world stations at the end of 2024 ================= */
 function renderStW(){
-  const W = DATA.stw, COL = {AP:'var(--h-station)', EMEA:'var(--h-car)', AM:'var(--h-truck)'};
+  const W = DATA.stw, COL = {AP:'var(--c-ap)', EMEA:'var(--c-emea)', AM:'var(--c-am)'};
   const bar = W.blocks.map(b => `<span class="stk__s" style="flex:${b.v};background:${COL[b.id]}"></span>`).join('');
   const key = W.blocks.map(b => `<div class="stk__k"><i style="background:${COL[b.id]}"></i><b>${fmt(b.v)}</b><span>${t(b.label)}</span>${b.id === 'AP' ? `<small>${t('chart.stw.apShare')}</small>` : ''}</div>`).join('');
   $('v03').innerHTML = `<div class="stk" role="img" aria-label="${esc(tp('chart.stw.aria', {n:fmt(W.total)}))} ${W.blocks.map(b => `${esc(tp(b.label))} ${fmt(b.v)}`).join('; ')}">`+
@@ -104,13 +104,13 @@ function renderStC(){
   const R = [{k:'cn', v:S.cn}, {k:'jp', v:S.jp}, {k:'de0', v:S.de_before, thr:true}, {k:'de', v:S.de}, {k:'ca', v:S.ca, out:S.ca_out}];
   let h = rowsBox(T, X, tp('chart.stc.aria') + ' ' + R.map(r => `${tp(SK[r.k][0])} ${r.thr ? tp('chart.stc.moreThan') + ' ' : ''}${fmt(r.v)}${r.out ? ', ' + tp('chart.stc.outAria', {n:r.out}) : ''}`).join('; '));
   R.forEach((r,i) => {
-    let bar = fill(i, X(r.v), r.thr ? 'var(--hatch-pump)' : 'var(--h-station)');
+    let bar = fill(i, X(r.v), r.thr ? 'var(--hatch-stations)' : 'var(--c-stations)');
     if(r.out) bar += `<span class="lr__seg" style="left:${at(X(r.v))};width:calc((100% - ${LAB})*${X(r.out)})"></span>`;
     bar += valLabel(X(r.v + (r.out || 0)), (r.thr ? tp('chart.stc.moreThan') + NB : '') + fmt(r.v) + (r.out ? `<small>+${r.out} ${t('chart.stc.out')}</small>` : ''));
     h += lrow(t(SK[r.k][0]), t(SK[r.k][1]), bar, '', flag(FS[r.k]));
   });
   $('v04').innerHTML = h + '</div>' + axis(T, X, v => fmt(v));
-  $('v04-leg').innerHTML = `<span><i class="sq" style="background:var(--h-station)"></i>${t('chart.stc.legOpen')}</span><span><i class="sq" style="background:var(--hatch-pump)"></i>${t('chart.stc.legThr')}</span><span><i class="sq" style="background:var(--hatch-down)"></i>${t('chart.stc.legOut')}</span>`;
+  $('v04-leg').innerHTML = `<span><i class="sq" style="background:var(--c-stations)"></i>${t('chart.stc.legOpen')}</span><span><i class="sq" style="background:var(--hatch-stations)"></i>${t('chart.stc.legThr')}</span><span><i class="sq" style="background:var(--hatch-danger)"></i>${t('chart.stc.legOut')}</span>`;
 }
 
 /* ================= V05 — the price of a kilo ================= */
@@ -119,7 +119,7 @@ function renderPrices(){
   const pay = (i, label, sub, v, bg) => lrow(label, sub, fill(i, X20(v), bg) + valLabel(X20(v), eur(v)));
   const de = `<div class="pcard__big"><b>${eur(P.de_max)}</b><span>${t('chart.price.de.bigLabel')}</span></div>`+
     `<div class="pcard__bars"><div class="rows lr--narrow" style="--grid:${grid([[X20(0)],[X20(5)],[X20(10)],[X20(15)],[X20(20)]])}" role="img" aria-label="${esc(tp('chart.price.de.aria', {max:P.de_max, truck:P.de_truck}))}">`+
-      pay(0, t('chart.price.de.max'), t('chart.price.de.maxSub'), P.de_max, 'var(--h-price)') + pay(1, t('chart.price.de.truck'), t('chart.price.de.truckSub'), P.de_truck, 'var(--h-truck)') + `</div></div>`+
+      pay(0, t('chart.price.de.max'), t('chart.price.de.maxSub'), P.de_max, 'var(--c-price)') + pay(1, t('chart.price.de.truck'), t('chart.price.de.truckSub'), P.de_truck, 'var(--c-trucks)') + `</div></div>`+
     `<p class="pcard__note">${t('chart.price.de.grossNet')}</p>`+
     `<div class="pcard__cuts"><div class="pcard__h">${t('chart.price.de.cutsTitle')}</div>`+
       `<div class="cut"><b>−${dec(P.cut5)}${LANG === 'es' ? NB + '%' : '%'}</b><span>${t('chart.price.de.cut5')}</span></div>`+
@@ -158,7 +158,7 @@ function renderBuses(){
   const B = DATA.buses, X = v => v / 160, T = [0, 40, 80, 120, 160];
   let h = rowsBox(T, X, tp('chart.bus.aria') + ' ' + B.map(b => `${tp(b.agency)}: ${b.svc} ${tp('chart.bus.svc')}${b.plan ? ', ' + b.plan + ' ' + tp('chart.bus.plan') : ''}`).join('; '));
   B.forEach((b, i) => {
-    let bar = fill(i, X(b.svc), 'var(--h-bus)');
+    let bar = fill(i, X(b.svc), 'var(--c-buses)');
     if(b.plan) bar += `<span class="lr__seg lr__seg--plan" style="left:${at(X(b.svc))};width:calc((100% - ${LAB})*${X(b.plan)})"></span>`;
     bar += valLabel(X(b.svc + (b.plan || 0)), `${b.svc}${b.plan ? `<small>+${b.plan}</small>` : ''}`);
     h += lrow(t(b.agency), esc(tp(b.detail)), bar);
@@ -182,12 +182,12 @@ function renderChina(){
   const C = DATA.china, P = DATA.prices;
   const XA = v => v / 100000, TA = [0, 25000, 50000, 75000, 100000];
   const tgt = rowsBox(TA, XA, tp('chart.cn.aria1', {t:fmt(C.target), s:fmt(C.sold)})) +
-    lrow(t('chart.cn.target'), t('chart.cn.targetSub'), fill(0, XA(C.target), 'var(--hatch-price)', 'outline:1px dashed var(--h-price);outline-offset:-1px;') + valLabel(XA(C.target), fmt(C.target))) +
-    lrow(t('chart.cn.sold'), t('chart.cn.soldSub'), fill(1, XA(C.sold), 'var(--h-price)') + valLabel(XA(C.sold), fmt(C.sold))) + '</div>' + axis(TA, XA, v => v ? fmt(v) : '0');
+    lrow(t('chart.cn.target'), t('chart.cn.targetSub'), fill(0, XA(C.target), 'var(--hatch-cars)', 'outline:1px dashed var(--c-cars);outline-offset:-1px;') + valLabel(XA(C.target), fmt(C.target))) +
+    lrow(t('chart.cn.sold'), t('chart.cn.soldSub'), fill(1, XA(C.sold), 'var(--c-cars)') + valLabel(XA(C.sold), fmt(C.sold))) + '</div>' + axis(TA, XA, v => v ? fmt(v) : '0');
   const XB = v => v / 1000, TB = [0, 250, 500, 750, 1000];
   const h1 = rowsBox(TB, XB, tp('chart.cn.aria2', {a:C.caam, b:C.sne})) +
-    lrow(t('chart.cn.caam'), t('chart.cn.caamSub'), fill(0, XB(C.caam), 'var(--h-car)') + valLabel(XB(C.caam), fmt(C.caam) + dl(C.caam_delta))) +
-    lrow(t('chart.cn.sne'), t('chart.cn.sneSub'), fill(1, XB(C.sne), 'var(--hatch-car)') + valLabel(XB(C.sne), fmt(C.sne) + dl(C.sne_delta))) + '</div>' + axis(TB, XB, v => fmt(v));
+    lrow(t('chart.cn.caam'), t('chart.cn.caamSub'), fill(0, XB(C.caam), 'var(--c-cars)') + valLabel(XB(C.caam), fmt(C.caam) + dl(C.caam_delta))) +
+    lrow(t('chart.cn.sne'), t('chart.cn.sneSub'), fill(1, XB(C.sne), 'var(--hatch-cars)') + valLabel(XB(C.sne), fmt(C.sne) + dl(C.sne_delta))) + '</div>' + axis(TB, XB, v => fmt(v));
   const card = (cls, title, sub, body) => `<article class="pcard ${cls}"><div class="pcard__top"><div class="pcard__title">${flags('cn')}${title}</div></div><div class="pcard__sub">${sub}</div>${body}</article>`;
   $('v09').innerHTML = `<div class="pcards">`+
     card('pcard--tgt', t('chart.cn.c1.title'), t('chart.cn.c1.sub'), tgt) +
