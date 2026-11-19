@@ -1,0 +1,407 @@
+{
+ "title": "Hydrogen in transport in 2026",
+ "cover": [
+  "Fewer stations, up to €19 a kilo and bets that are narrowing",
+  "Prepared 18 November 2026 · Astara Intelligence · Companion file: Hydrogen_Transport_InDepth_Data.xlsx"
+ ],
+ "paras": {
+  "how1": "Scope: hydrogen as a fuel for road vehicles (cars, trucks and buses) and their refuelling stations. Hydrogen production appears only where it affects transport: public aid and manufacturers' electrolysers. Ships, trains, aviation, industry and stationary hydrogen are out of scope.",
+  "how2": "Marks: [EXT] is an external source, with its URL in Appendix B and in the Excel. [DB] is an entry in the AllMoving database, with its id and URL in the 12_Entries_DB sheet. [Own calculation] is arithmetic on figures that already carry a source.",
+  "how3": "Selection rule: a figure or fact is included only if the cited page was read. Nothing is estimated. \"ND\" means there is no defensible figure. What could not be checked is in Appendix C, not in the text.",
+  "how4": "Two caveats apply throughout: figures for different countries have different dates and definitions and are not added up; and a plan or a target is not a fact.",
+  "sum1": "In 2026 hydrogen in transport is narrowing: it grows in two markets and in the brands that keep betting on it, while the station network shrinks in Germany and Japan and the kilo reaches €19 in Germany.",
+  "sum2": "Sales of fuel cell cars rose in 2025 to 16,011 units, 24.4% more than in 2024, but according to SNE Research every market outside China and South Korea fell. In the first half of 2026, 4,643 were sold, 13% more than a year earlier, with Hyundai at 3,337 (+161.9%) and Toyota at 306 (-56.7%) [EXT: SNE Research via electrive and Asia Business Daily].",
+  "sum3": "The network is shrinking in Germany and Japan. Germany has about 50 public stations open in January 2026, against more than 80 two years earlier [EXT: electrive.net]. Japan counts 149 [EXT: Nikkei via Automotive World]. In California, 50 are open and 11 are out of service, with average availability close to 60% [EXT: California Energy Commission]. Refuelling costs up to about €19 a kilo in Germany [EXT: autohaus.de].",
+  "sum4": "GM and its joint venture with Honda are leaving, and the projects with public money remain. GM ended development of next-generation fuel cells and its joint venture with Honda will stop producing before the end of 2026; Arthur Bus and Quantron went insolvent. Hyundai, BMW and Toyota carry on, along with the European truck alliance, €220m of German aid and the European Hydrogen Bank, while Daimler's series production of trucks is postponed from 2027 to the 2030s [EXT: electrive, gasworld, Daimler Truck].",
+  "s1_h": "Cars: growth in just two markets",
+  "s1p1": "16,011 fuel cell cars were sold worldwide in 2025, 24.4% more than in 2024 [EXT: SNE Research via electrive, 23 February 2026]. By market: China 7,797 (the source calls the figure \"commercial\"), South Korea 6,802, Europe 566, Japan 430 and North America 365. According to the same source, every market outside China and South Korea fell.",
+  "s1p2": "By brand, Hyundai sold 6,861 (+78.9%, with the second-generation Nexo) and Toyota 1,168 (-39.1%). In Japan, Nikkei counts 431 sales in 2025, 83% fewer than in 2021 [EXT: Nikkei via Automotive World].",
+  "s1p3": "In the first half of 2026, 4,643 units were sold worldwide against 4,110 a year earlier (+13%). Hyundai sold 3,337 (+161.9%), Toyota 306 (-56.7%) and Chinese commercial vehicles 921 (-54.4%) [EXT: SNE Research via Asia Business Daily, 6 August 2026].",
+  "s1p4": "The new Nexo costs from €69,900 in Germany (the previous one, from €77,290), with 826 km of range and a hydrogen consumption of 0.8 to 0.9 kg per 100 km [EXT: ecomento.de, 8 January 2026]. BMW will launch the iX5 Hydrogen in 2028, with €273m of public aid from the federal government and Bavaria; the 750 km range is a target [DB + EXT: electrive, 11 September 2026].",
+  "s2_h": "Stations: few and concentrated",
+  "s2p1": "Interact Analysis counted 1,369 hydrogen stations deployed worldwide at the end of 2024: 849 in Asia-Pacific (62%), 412 in Europe, the Middle East and Africa and 108 in the Americas. China, South Korea, Japan, France and Germany account for 79% [EXT: Interact Analysis via EV Candi, 7 February 2025]. It is a single-source count: there is no worldwide count for 2026.",
+  "s2p2": "The 2026 country figures show a network that is shrinking or not taking off:",
+  "s2b1": "Germany: about 50 public stations open in January 2026 (13 with 700 bar only, 35 with both pressures and 2 with 350 bar only); two years earlier there were more than 80 [EXT: electrive.net, 15 January 2026].",
+  "s2b2": "Japan: 149 stations in February 2026, 10% fewer than five years ago and less than half the 320 the government had planned [EXT: Nikkei via Automotive World].",
+  "s2b3": "California: 50 stations open to the public on 2 September 2025 and 11 temporarily out of service. Average network availability over the last year was close to 60%. There are 14,128 fuel cell cars registered (April 2025) [EXT: California Energy Commission].",
+  "s2b4": "China: 574 stations and more than 360 t/day of capacity at the end of 2025; an official cited more than 590 in June 2026 [EXT: China Daily, 23 March 2026].",
+  "s2p3": "Element 2, which was building stations in the United Kingdom, had a winding-up petition served in September 2026; the article does not confirm the liquidation [DB + EXT: gasworld, 3 November 2026].",
+  "s3_h": "What a kilo costs",
+  "s3p1": "In Germany hydrogen costs up to about €19/kg at the pump (gross price, January 2026); prices are dynamic and vary by region and pressure [EXT: autohaus.de, 13 January 2026]. H2 Mobility has cut the price by about 10% at 5 stations (1 June) and by 12 to 16% at 15 stations (1 October); none of the sources read gives the absolute price before and after [DB + EXT: electrive.net, 28 September 2026]. For trucks, the hylane tariff at H2 Mobility stations is about €8/kg net from 1 January 2026, only with its card and for contracted volumes [EXT: solarserver.de, 18 November 2025].",
+  "s3p2": "Own calculation: with a consumption of 0.8 to 0.9 kg per 100 km and the maximum price of €19/kg, a car spends €15 to 17 on hydrogen per 100 km. It is a ceiling: at stations with a price cut it would be somewhat less. There is no verified electricity price, so it is not compared with a battery-electric car.",
+  "s3p3": "In China the kilo costs 35 to 76 yuan in the pilot cities and the target of three ministries is to get below 25 yuan in 2030 [EXT: China Daily, 23 March 2026]. It is not converted to euros.",
+  "s3p4": "The US Department of Energy's goals (May 2024 plan) are USD 2/kg for production in 2026 and USD 1/kg in 2031, USD 7/kg for hydrogen dispensed to heavy-duty vehicles in 2028 and USD 80/kW for the heavy-transport fuel cell system in 2030. They are goals, not actual costs; the DOE site warns that a new plan is coming [EXT: US Department of Energy].",
+  "s4_h": "Trucks: series production slips, pilots continue",
+  "s4p1": "Daimler Truck says its customers have driven almost 600,000 km with fuel cell trucks and plans to deploy a small series of 100 next-generation fuel cell trucks with customers from the end of 2026. It is a plan, not deliveries. electrive recalls that Daimler delayed series production from 2027 to the 2030s [EXT: Daimler Truck, 15 September 2026; electrive, 3 September 2026].",
+  "s4p2": "On 15 September 2026 Daimler, Volvo, Toyota, Bosch, Air Liquide, TotalEnergies, TEAL Mobility and MB Energy announced cooperation on hydrogen mobility in Europe, with a horizon of 2030. Daimler is also preparing hydrogen combustion engine trucks, which according to the release would come out \"next year\" [EXT: Daimler Truck].",
+  "s4p3": "The Rhenus pilot with Daimler GenH2 trucks on liquid hydrogen measures a consumption of 5.6 to 8.0 kg per 100 km and adds up to about 225,000 km in phase 1 (5 trucks). Phase 2 has five customers. According to the source, there are only two liquid hydrogen stations in Germany [DB + EXT: electrive, 26 March 2026].",
+  "s4p4": "The German government has put €220m of aid into the hydrogen truck network; more than 70 stations and 800 trucks were applied for, with more than 500 applications in the first call, which would be decided in the second half of 2026 [DB + EXT: electrive, 3 September 2026]. Thailand approved 1,490 million baht (about €39m) to produce the Toyota Hilux FCEV from December 2027, up to 3,000 units a year [DB + EXT: electrive, 27 October 2026].",
+  "s4p5": "Quantron became insolvent at the end of October 2024, its founder bought the assets on 1 April 2025 and in September 2026 Quantron and HyperView set up a joint venture in China, with Foxconn as manufacturer. It expects 100 pre-series vehicles at the end of 2026: this is a plan [DB + EXT: electrive, 18 September 2026].",
+  "s5_h": "Buses: small fleets",
+  "s5p1": "The US Fuel Cell and Hydrogen Energy Association (FCHEA, an industry source) reports small and growing fleets: SamTrans has 10 buses in service and 108 more approved; Victor Valley presented 13 earlier in 2026; Montebello put 3 into operation in August 2026; New York's MTA received 2 in June 2026 and its future Gun Hill station could serve 40; Rochester RTS has 2 and will acquire 10 more. Three New York agencies receive USD 52.5m from the Zero-Emission Transit Transition programme (October 2025). The source itself says operation is concentrated in pilots and relatively small fleets [EXT: FCHEA, August 2026].",
+  "s5p2": "In Europe, Arthur Bus (Poland) filed for insolvency on 26 November 2025, affecting 20 buses ordered by Lublin and 3 by Buspunkt [DB + EXT: electrive, 3 February 2026].",
+  "s6_h": "Who leaves and who bets",
+  "s6p1": "Exits and insolvencies. In October 2025 GM ended development of next-generation fuel cells and cancelled a USD 55m plant in Detroit; it had invested almost USD 3,000m since the late nineties [EXT: CBT News, 13 October 2025]. Its joint venture with Honda (FCSM) will stop producing before the end of 2026 [EXT: Automotive Manufacturing Solutions, 22 January 2026]. To these are added Arthur Bus, Quantron and Element 2.",
+  "s6p2": "Bets and aid. In November 2026 Hyundai unveiled its first 5 MW PEM electrolyser, with series production in 2027, and signed a non-binding agreement with Air Liquide on hydrogen mobility in China [DB + EXT: gasworld, 4 and 9 November 2026]. In the third auction the European Hydrogen Bank signed €62m for Gen2 Energy (Norway, €3.48/kg for ten years) and €139.8m for Hy2gen (Denmark, €0.97/kg for ten years) [DB + EXT: gasworld, 11 and 16 November 2026].",
+  "s7_h": "China: target and reality",
+  "s7p1": "China's target is 100,000 fuel cell vehicles in 2030; the five pilot city clusters had sold 39,023 [EXT: China Daily, 23 March 2026]. In the first half of 2026 sales were 550 according to CAAM (-63.5%) and 921 commercial vehicles according to SNE Research (-54.4%): they use different definitions. In the fourth quarter of 2025 more than 3,000 units a month were exceeded [EXT: SMM with data from CAAM, 17 July 2026].",
+  "who_h": "Who is who, as of 18 November 2026",
+  "watch_h": "What to watch",
+  "src1": "Interact Analysis / EV Candi. Nearly 80% of global hydrogen refueling stations are located in just five countries. https://www.evcandi.com/news/nearly-80-global-hydrogen-refueling-stations-are-located-just-five-countries",
+  "src2": "electrive.net and autohaus.de (H2 Mobility data). Nur noch rund 50 öffentliche Wasserstoff-Tankstellen in Deutschland (15 Jan 2026). https://www.electrive.net/2026/01/15/nur-noch-rund-50-oeffentliche-wasserstoff-tankstellen-in-deutschland/",
+  "src3": "California Energy Commission. AB 126 2025 Annual Assessment, hydrogen (CEC-600-2026-022, updated 1 May 2026). https://www.energy.ca.gov/publications/2026/joint-agency-staff-report-assembly-bill-126-2025-annual-assessment-hydrogen",
+  "src4": "Nikkei via Automotive World. FCEV sales in Japan fall 83% as refuelling stations close (19 Feb 2026). https://www.automotiveworld.com/news/fcev-sales-in-japan-fall-83-as-refuelling-stations-close/",
+  "src5": "China Daily via chinaservicesinfo. Pilot programs aim to expand hydrogen power (23 Mar 2026). https://www.chinaservicesinfo.com/s/202603/23/WS69e6ea5f498e23165e06eeee/pilot-programs-aim-to-expand-hydrogen-power.html",
+  "src6": "SNE Research via electrive. Global H2 vehicle sales rise by nearly 25%. https://www.electrive.com/2026/02/23/global-h%E2%82%82-vehicle-sales-rise-by-nearly-25/",
+  "src7": "SNE Research via Asia Business Daily. Seven out of ten hydrogen vehicles sold in H1 were Hyundai (6 Aug 2026). https://view.asiae.co.kr/en/article/2026080608104244577",
+  "src8": "ecomento.de. Hyundai startet Verkauf des neuen Nexo (8 Jan 2026). https://ecomento.de/2026/01/08/hyundai-startet-verkauf-des-neuen-nexo/",
+  "src9": "electrive. BMW iX5 Hydrogen: testing of the upcoming hydrogen SUV underway (11 Sep 2026). https://www.electrive.com/2026/09/11/bmw-ix5-hydrogen-testing-of-the-upcoming-hydrogen-suv-underway/",
+  "src10": "autohaus.de (dpa). Wasserstoff-Tankstellen: Angebot schrumpft weiter (13 Jan 2026). https://www.autohaus.de/nachrichten/autohersteller/wasserstoff-tankstellen-das-angebot-schrumpft-weiter-3755713",
+  "src11": "electrive.net and vision-mobility.de. H2 Mobility senkt an 15 Tankstellen seine H2-Preise (28 Sep 2026). https://www.electrive.net/2026/09/28/h2-mobility-senkt-an-15-tankstellen-seine-h2-preise/",
+  "src12": "solarserver.de. 8 Euro pro kg: hylane und H2 Mobility senken Kosten für Wasserstoff-Lkw (18 Nov 2025). https://www.solarserver.de/2025/11/18/8-euro-pro-kg-hylane-und-h2-mobility-senken-kosten-fuer-wasserstoff-lkw/",
+  "src13": "US Department of Energy. Hydrogen and Fuel Cell Technologies Multi-Year Program Plan. https://www.energy.gov/cmei/fuels/hydrogen-and-fuel-cell-technologies-multi-year-program-plan",
+  "src14": "Daimler Truck. Industry leaders scale full value chain for hydrogen mobility across Europe. https://www.daimlertruck.com/en/newsroom/pressrelease/industry-leaders-scale-full-value-chain-for-hydrogen-mobility-across-europe-53596060",
+  "src15": "electrive. Rhenus tests H2 truck in regular operations (26 Mar 2026). https://www.electrive.com/2026/03/26/rhenus-tests-h2-truck-in-regular-operations/",
+  "src16": "electrive. Germany: hydrogen truck mobility alliance moves forward (3 Sep 2026). https://www.electrive.com/2026/09/03/germany-hydrogen-truck-mobility-alliance-moves-forward/",
+  "src17": "electrive and Daimler Truck. Germany: hydrogen truck mobility alliance moves forward (3 Sep 2026). https://www.electrive.com/2026/09/03/germany-hydrogen-truck-mobility-alliance-moves-forward/",
+  "src18": "electrive. Quantron and HyperView establish joint venture in China (18 Sep 2026). https://www.electrive.com/2026/09/18/quantron-and-hyperview-establish-joint-venture-in-china/",
+  "src19": "electrive. Thailand approves 39 million investment for Toyota Hilux FCEV production (27 Oct 2026). https://www.electrive.com/2026/10/27/thailand-approves-e39-million-investment-for-toyota-hilux-fcev-production/",
+  "src20": "FCHEA. Transit Agencies Continue to Grow U.S. Fuel Cell Bus Fleets. https://fchea.org/transit-agencies-continue-to-grow-u-s-fuel-cell-bus-fleets/",
+  "src21": "electrive. Hydrogen bus startup Arthur Bus files for insolvency in Poland (3 Feb 2026). https://www.electrive.com/2026/02/03/hydrogen-bus-startup-arthur-bus-files-for-insolvency-in-poland/",
+  "src22": "CBT News. GM ends next-gen hydrogen fuel cell development (13 Oct 2025). https://www.cbtnews.com/gm-ends-next-gen-hydrogen-fuel-cell-development-to-double-down-on-ev-future/",
+  "src23": "Automotive Manufacturing Solutions. Honda/GM fuel cell venture ends (22 Jan 2026). https://www.automotivemanufacturingsolutions.com/electrification/hondagm-fuel-cell-venture-ends-as-ev-priorities-reshape/2591276",
+  "src24": "gasworld. UK hydrogen refuelling company staring down bankruptcy (3 Nov 2026). https://www.gasworld.com/story/uk-hydrogen-refuelling-company-staring-down-bankruptcy/2263271.article/",
+  "src25": "gasworld. EHB finalises first third-round subsidy award with Gen2 (11 Nov 2026). https://www.gasworld.com/story/ehb-finalises-first-third-round-subsidy-award-with-gen2s-norway-lh2-project/2263984.article/",
+  "src26": "gasworld. Hyundai unveils first 5MW PEM electrolyser (4 Nov 2026). https://www.gasworld.com/story/hyundai-unveils-first-5mw-pem-electrolyser/2263497.article/",
+  "src27": "gasworld. Hyundai and Air Liquide partner on Chinese hydrogen mobility (9 Nov 2026). https://www.gasworld.com/story/hyundai-and-air-liquide-partner-on-chinese-hydrogen-mobility/2263810.article/",
+  "src28": "SMM with data from CAAM. Review of China FCV production and sales in H1 2026 (17 Jul 2026). https://news.metal.com/en/newscontent/104010056-review-of-chinas-fuel-cell-vehicle-production-sales-in-h1-2026-and-h2-outlook",
+  "src29": "AllMoving database entries used: 12, with their id and URL in the 12_Entries_DB sheet of the Excel."
+ },
+ "tables": [
+  {
+   "section": "sum",
+   "rows": [
+    [
+     "Figure",
+     "Value",
+     "Date",
+     "Context"
+    ],
+    [
+     "Fuel cell cars sold worldwide in 2025",
+     "16,011 units",
+     "2025",
+     "+24.4% on 2024"
+    ],
+    [
+     "Fuel cell cars sold worldwide, first half of 2026",
+     "4,643 units",
+     "2026-H1",
+     "+13% on the 4,110 of the first half of 2025"
+    ],
+    [
+     "Public hydrogen stations open in Germany",
+     "50 stations",
+     "2026-01",
+     "Two years earlier, more than 80"
+    ],
+    [
+     "Maximum hydrogen pump price in Germany",
+     "19 €/kg (gross)",
+     "2026-01",
+     "Up to about 19; dynamic prices"
+    ],
+    [
+     "Kilometres with Daimler Truck fuel cell trucks",
+     "600,000 km (almost)",
+     "2026-09-15",
+     "According to the Daimler Truck release"
+    ],
+    [
+     "Next-generation fuel cell trucks Daimler plans to deploy",
+     "100 trucks",
+     "From the end of 2026",
+     "A plan, not deliveries"
+    ]
+   ]
+  },
+  {
+   "section": "sum",
+   "rows": [
+    [
+     "VISUAL V01 · Key figures Data: Excel sheet 02_Key_Figures. Type: Strip of six figures. Six tiles with the big number, one line of context and the date. Footnote: \"Different sources and different dates: do not add up or compare across tiles\"."
+    ]
+   ]
+  },
+  {
+   "section": "s1",
+   "rows": [
+    [
+     "VISUAL V02 · Fuel cell cars: sales Data: Excel sheet 03_Car_Sales. Type: Horizontal bars in three panels. Panel A: 2025 sales by market. Panel B: 2025 sales by brand, with the change on 2024. Panel C: first half of 2026 against the first half of 2025, with the change for Hyundai, Toyota and Chinese commercial vehicles. Mark the China figure as \"commercial\" according to the source."
+    ]
+   ]
+  },
+  {
+   "section": "s2",
+   "rows": [
+    [
+     "VISUAL V03 · Stations: world split at the end of 2024 Data: Excel sheet 04_Stations_World. Type: Stacked bars or ring. Three blocks (Asia-Pacific, EMEA, Americas) adding up to 1,369 and a note with the 79% in five countries. Footer with the source (Interact Analysis) and the caveat that other counts give different figures."
+    ]
+   ]
+  },
+  {
+   "section": "s2",
+   "rows": [
+    [
+     "VISUAL V04 · Stations by country Data: Excel sheet 05_Stations_Countries. Type: Bars with date and definition. One bar per country, with the date and the definition in the label (public, open, total). Germany with two bars: \"two years ago, more than 80\" and \"January 2026, 50\". California with a separate mark for the 11 out of service. There is no common date axis: do not add up."
+    ]
+   ]
+  },
+  {
+   "section": "s3",
+   "rows": [
+    [
+     "VISUAL V05 · The price of a kilo of hydrogen Data: Excel sheet 06_Prices. Type: Figure panels. Germany panel: up to €19/kg at the pump, a truck tariff of about €8/kg net and H2 Mobility price cuts. China panel in yuan: 35 to 76 today and under 25 as the 2030 target, not converted to euros. Box with the own calculation: €15 to 17 per 100 km for a car. The DOE targets in a separate note, marked as targets."
+    ]
+   ]
+  },
+  {
+   "section": "s4",
+   "rows": [
+    [
+     "VISUAL V06 · Trucks: what is done and what is postponed Data: Excel sheet 07_Trucks. Type: Timeline with status. Timeline from October 2024 to 2030. Each milestone with its status: done, plan or pending. Highlight the postponement of Daimler's series from 2027 to the 2030s and the 100 trucks planned from the end of 2026."
+    ]
+   ]
+  },
+  {
+   "section": "s5",
+   "rows": [
+    [
+     "VISUAL V07 · Fuel cell buses in the US Data: Excel sheet 08_Buses. Type: Agency table with bars. One row per agency: buses in service and buses approved or planned, in two colours. Footer: industry source (FCHEA)."
+    ]
+   ]
+  },
+  {
+   "section": "s6",
+   "rows": [
+    [
+     "VISUAL V08 · Who leaves and who bets, 2025 and 2026 Data: Excel sheet 09_Exits_and_Bets. Type: Two-lane timeline. Top lane: exits and insolvencies. Bottom lane: bets and public aid. Each milestone with date, company and one line. Mark the Element 2 liquidation as \"not confirmed in the article\"."
+    ]
+   ]
+  },
+  {
+   "section": "s7",
+   "rows": [
+    [
+     "VISUAL V09 · China: target and reality Data: Excel sheet 10_China. Type: Compared figures. Target of 100,000 vehicles in 2030 against 39,023 sold in the five clusters. First-half 2026 sales with both counts (550 and 921) and their definition. Stations at the end of 2025 and the price per kilo against the target."
+    ]
+   ]
+  },
+  {
+   "section": "who",
+   "rows": [
+    [
+     "Company",
+     "What it has done",
+     "Excel facts"
+    ],
+    [
+     "Daimler Truck",
+     "Almost 600,000 km with customers' fuel cell trucks; plan for 100 new trucks from the end of 2026; series production delayed from 2027 to the 2030s (according to electrive).",
+     "H2-048, H2-049, H2-111"
+    ],
+    [
+     "Toyota",
+     "1,168 fuel cell cars sold in 2025 (-39.1%); Hilux FCEV in Thailand from December 2027; member of the European truck alliance.",
+     "H2-053, H2-117, H2-051"
+    ],
+    [
+     "Hyundai",
+     "6,861 fuel cell cars sold in 2025 (+78.9%); new Nexo from €69,900 in Germany; 5 MW electrolyser; non-binding agreement with Air Liquide in China.",
+     "H2-054, H2-105, H2-127, H2-137"
+    ],
+    [
+     "General Motors and Honda",
+     "GM ended development of next-generation fuel cells (October 2025); its joint venture with Honda will stop producing before the end of 2026.",
+     "H2-131, H2-132"
+    ],
+    [
+     "BMW",
+     "iX5 Hydrogen for 2028, with €273m of public aid.",
+     "H2-106"
+    ],
+    [
+     "Air Liquide",
+     "50% co-owner of TEAL Mobility with TotalEnergies; member of the European truck alliance; non-binding agreement with Hyundai.",
+     "H2-051, H2-137"
+    ],
+    [
+     "Volvo, Bosch, TotalEnergies and MB Energy",
+     "Members of the European hydrogen truck alliance of September 2026.",
+     "H2-051"
+    ],
+    [
+     "H2 Mobility (Germany)",
+     "Price cuts: about 10% at 5 stations (1 June 2026) and 12 to 16% at 15 stations (1 October).",
+     "H2-120"
+    ],
+    [
+     "Rhenus",
+     "Pilot with a Daimler Truck GenH2 truck on liquid hydrogen: 5.6 to 8.0 kg/100 km.",
+     "H2-110"
+    ],
+    [
+     "Quantron",
+     "Insolvent in 2024; assets bought by its founder in April 2025; joint venture with HyperView in China in September 2026.",
+     "H2-115"
+    ],
+    [
+     "Arthur Bus",
+     "Filed for insolvency on 26 November 2025.",
+     "H2-109"
+    ],
+    [
+     "Element 2",
+     "Winding-up petition served in September 2026; the liquidation is not confirmed.",
+     "H2-135"
+    ]
+   ]
+  },
+  {
+   "section": "watch",
+   "rows": [
+    [
+     "Signal",
+     "Why it matters",
+     "When"
+    ],
+    [
+     "Daimler: 100 next-generation trucks with customers",
+     "It is the first series of the new generation and series production was already postponed to the 2030s.",
+     "From the end of 2026"
+    ],
+    [
+     "End of the Honda and GM fuel cell joint venture",
+     "Honda continues on its own; GM has already left development.",
+     "Before the end of 2026"
+    ],
+    [
+     "Germany: decision on aid to the truck network",
+     "More than 70 stations and 800 trucks were applied for against €220m of aid.",
+     "Second half of 2026"
+    ],
+    [
+     "European Hydrogen Bank: rest of the third auction",
+     "More than €1,000m in total is expected; the first two signed awards are €62m and €139.8m.",
+     "After November 2026"
+    ],
+    [
+     "Hyundai: series production of electrolysers",
+     "Hyundai presents its first own electrolyser and is building a fuel cell stack plant in Ulsan for 30,000 a year.",
+     "2027"
+    ],
+    [
+     "Toyota Hilux FCEV and BMW iX5 Hydrogen",
+     "BMW has €273m of public aid and Thailand approved the Hilux investment.",
+     "2028"
+    ],
+    [
+     "China: targets of 100,000 vehicles and under 25 yuan/kg",
+     "Today there are 39,023 vehicles in the pilot clusters and the kilo costs 35 to 76 yuan.",
+     "2030"
+    ]
+   ]
+  }
+ ],
+ "visuals": [],
+ "appendix": {
+  "A": [
+   [
+    "Id",
+    "Type",
+    "Title",
+    "Excel sheet",
+    "Section"
+   ],
+   [
+    "V01",
+    "Strip of six figures",
+    "Key figures",
+    "02_Key_Figures",
+    "1"
+   ],
+   [
+    "V02",
+    "Horizontal bars in three panels",
+    "Fuel cell cars: sales",
+    "03_Car_Sales",
+    "2"
+   ],
+   [
+    "V03",
+    "Stacked bars or ring",
+    "Stations: world split at the end of 2024",
+    "04_Stations_World",
+    "2"
+   ],
+   [
+    "V04",
+    "Bars with date and definition",
+    "Stations by country",
+    "05_Stations_Countries",
+    "2"
+   ],
+   [
+    "V05",
+    "Figure panels",
+    "The price of a kilo of hydrogen",
+    "06_Prices",
+    "3"
+   ],
+   [
+    "V06",
+    "Timeline with status",
+    "Trucks: what is done and what is postponed",
+    "07_Trucks",
+    "4"
+   ],
+   [
+    "V07",
+    "Agency table with bars",
+    "Fuel cell buses in the US",
+    "08_Buses",
+    "5"
+   ],
+   [
+    "V08",
+    "Two-lane timeline",
+    "Who leaves and who bets, 2025 and 2026",
+    "09_Exits_and_Bets",
+    "6"
+   ],
+   [
+    "V09",
+    "Compared figures",
+    "China: target and reality",
+    "10_China",
+    "7"
+   ]
+  ],
+  "C": [
+   "Coverage of the AllMoving database. The \"Hydrogen & Fuel Cell Mobility\" line (id 96) has 799 entries: 216 from 2020, 264 from 2021, 124 from 2022, 59 from 2023, 70 from 2024, 19 from 2025 and 25 from 2026. It measures what was ingested, not market activity: it is not read as a trend. Of the 25 from 2026, the ones that state a fact were read and used (12 entries in all, with those from 2025); the rest are known only by their headline and are not used. Check: Before printing, do not show the volume per year as a trend.",
+   "Global market data (committed investment, production capacity, number of projects, demand). The IEA, Hydrogen Council and S&P Global pages, the ICCT PDF on Hainan and the California Energy Commission PDF block automated reading. Figures confirmed only in the trade press have been left out of this document. Check: For a global market overview, those original reports must be read.",
+   "Worldwide station count. The figure of 1,369 at the end of 2024 is from Interact Analysis, cited by EV Candi. Other counts give different figures and could not be read. There is no worldwide count for 2026. Check: Always cite \"Interact Analysis, end of 2024\".",
+   "Different dates and definitions across countries. Germany counts public stations (January 2026), Japan stations (February 2026), California stations open to the public (September 2025) and China stations (December 2025). They are not added up or compared on one axis. Check: The design must show the date and the definition on every bar.",
+   "China sales. The CAAM count gives 550 for the first half of 2026 and SNE Research 921 commercial vehicles. They use different definitions. The Chinese figure for 2025 (7,797) appears as \"commercial\" in the source. Check: Do not speak of \"cars\" in China without making this clear.",
+   "Prices. They are dynamic and vary by region and pressure. There is no absolute price before and after the H2 Mobility cuts. Yuan are not converted to euros. There is no verified electricity price, so the cost per 100 km is not compared with that of a battery-electric car. Check: Do not add comparisons with electric cars without a separate source.",
+   "2026 sources. Most are trade press (electrive, gasworld, Automotive World, Hydrogen Fuel News), not releases or official reports. Sensitive cases: Element 2 (the article does not confirm the liquidation) and Arthur Bus (financial data from second-hand Polish press). Check: Re-read the Element 2 and Arthur Bus sources before printing.",
+   "Plans and targets. Daimler's 100 trucks, the Hilux FCEV, the BMW iX5 Hydrogen, the DOE goals and China's targets are plans or targets, not facts. The DOE site warns that it will replace its 2024 plan. Check: Label them \"plan\" or \"target\" in the design.",
+   "Industry source. The US bus data come from FCHEA, the sector association. Check: Cite it as an industry source.",
+   "What was left out on purpose. Every figure that could not be read at the source has been removed, along with those from search-engine summaries, from opinion pieces, company claims that were not checked (for example the truck specifications announced by Chinese manufacturers) and calculations that mixed bases from different sources. Check: The detail of what was removed is in RETIRADO.md in the folder, for the editor.",
+   "Database entries with low classification confidence. Three 2026 entries of line 96 (a production hub in Asturias, RINA Morocco and Hyundai's European vision) have a doubtful classification. They are not used. Check: Pass them to the Classification and upload chat for review."
+  ]
+ },
+ "notes": [
+  "This is the base content for the visual piece: text, numbers and chart specifications. Each section ends with the visuals it needs and the Excel sheet that feeds them."
+ ]
+}

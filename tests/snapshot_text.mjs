@@ -1,0 +1,27 @@
+// Writes what a reader sees (text, head metadata, accessibility labels, chart marks) for EN and ES, so two builds can be compared.
+// Usage: node tests/snapshot_text.mjs <out.json> [width]
+import fs from 'node:fs';
+import { withBrowser } from './lib/browser.mjs';
+
+const out = process.argv[2], width = +(process.argv[3] || 1440);
+const SNAP = `(() => {
+  const norm = s => s.replace(/\\s+/g, ' ').trim();
+  const lines = [...document.querySelectorAll('body *')].filter(e => !['SCRIPT','STYLE','svg'].includes(e.tagName) && !e.closest('script,style'))
+    .map(e => [...e.childNodes].filter(n => n.nodeType === 3).map(n => norm(n.nodeValue)).filter(Boolean).join(' ')).filter(Boolean);
+  const attrs = [...document.querySelectorAll('[alt],[aria-label],[title]')].map(e => ['alt','aria-label','title'].filter(a => e.hasAttribute(a)).map(a => a + '=' + norm(e.getAttribute(a))).join('|'));
+  const svgText = [...document.querySelectorAll('svg text')].map(e => norm(e.textContent));
+  const rows = { cars: document.querySelectorAll('#v02a .row, #v02b .row, #v02c .row').length, stations: document.querySelectorAll('#v04 .row').length, trucks: document.querySelectorAll('#v06 .tl__i').length, buses: document.querySelectorAll('#v07 .row').length, lanes: document.querySelectorAll('#v08 .ln__i').length, cards: document.querySelectorAll('.pcard').length, svgs: document.querySelectorAll('svg').length };
+  return { lang: document.documentElement.lang, title: document.title, description: document.querySelector('meta[name=description]')?.content, lines, attrs, svgText, rows };
+})()`;
+
+const res = {};
+await withBrowser(async ({ base, open }) => {
+  for (const lang of ['en', 'es']) {
+    const page = await open(); await page.viewport(width, 900, width < 800);
+    await page.goto(`${base}/index_94.html?lang=${lang}`);
+    await page.eval('new Promise(r => setTimeout(r, 1500))');
+    res[lang] = await page.eval(SNAP); res[lang].errors = page.errors;
+  }
+});
+fs.writeFileSync(out, JSON.stringify(res, null, 1));
+console.log('written', out, Object.fromEntries(Object.entries(res).map(([k, v]) => [k, { lines: v.lines.length, svgText: v.svgText.length, errors: v.errors.length }])));
