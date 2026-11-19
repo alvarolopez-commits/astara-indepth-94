@@ -21,6 +21,8 @@ deploy/*
 !_build/*
 !_build/i18n/
 !_build/i18n/*
+!_build/vendor/
+!_build/vendor/*
 !tests/
 !tests/*
 !tests/lib/
