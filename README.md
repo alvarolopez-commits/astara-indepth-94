@@ -3,7 +3,7 @@
 Fewer stations, up to €19 a kilo and bets that are narrowing. Cars, trucks, buses and stations; EN | ES.
 
 - `index_94.html` — the published page (self-contained apart from `deploy/`). `index.html` is an identical copy written by the build.
-- `deploy/` — logo and the cover photo. The cover is still the #93 photo (`img/hero93-*.webp`): to be replaced. `d3.v7.min.js`, `flags/`, `countries-110m.js` and `topojson-client.min.js` are left over from #92/#93 and are not used by #94.
+- `deploy/` — logo and the cover photo. The cover photo is `img/hero94-*.webp`, graded from the supplied banner by `_build/make_hero94.py` (source: `DATA/hero94_source.png`, not tracked). `d3.v7.min.js`, `flags/`, `countries-110m.js` and `topojson-client.min.js` are left over from #92/#93 and are not used by #94.
 - `DATA/` — the editor's docx (text) and Excel (chart data). Not published.
 - `_build/` — sources to regenerate the page. Run from this folder:
 
