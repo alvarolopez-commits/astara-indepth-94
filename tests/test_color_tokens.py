@@ -31,11 +31,11 @@ class ColourTokens(unittest.TestCase):
         for name, token in (("card", "bg-card"), ("page", "bg"), ("alt", "bg-alt")):
             self.assertRegex(css, rf"--{token}:\s*{re.escape(self.surf[name])}", f"surface {name} differs from the stylesheet: rerun node _build/color_decisions94.js")
 
-    def test_data_marks_reach_3_to_1_on_every_surface(self):
+    def test_data_marks_reach_3_1_to_1_on_every_surface(self):
         for k, v in self.tokens.items():
             if k.startswith("c-"):
                 for s, bg in self.surf.items():
-                    self.assertGreaterEqual(contrast(v, bg), 3, f"{k} {v} on {s} {bg}")
+                    self.assertGreaterEqual(contrast(v, bg), 3.1, f"{k} {v} on {s} {bg}")
 
     def test_text_colours_reach_4_5_to_1(self):
         for k in ("c-up", "c-down", "s-success", "s-warning", "s-danger", "s-info", "s-neutral", "n-series"):

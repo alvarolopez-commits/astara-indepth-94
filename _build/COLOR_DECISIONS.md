@@ -5,7 +5,7 @@ Regenerate with `node _build/color_decisions94.js`, then `python -X utf8 _build/
 
 The engine is a heuristic recommender, **not** a WCAG or colour-vision certificate. What was measured is listed; what is pending is said.
 
-Surfaces the marks sit on: card #292A4E · page #221E41 · alt #20274C. Marks must reach 3:1, text 4.5:1.
+Surfaces the marks sit on: card #292A4E · page #221E41 · alt #20274C. Marks must reach 3.1:1, text 4.5:1.
 
 ## Roles (COL-04)
 
@@ -26,11 +26,13 @@ No chart maps a continuous value to colour: magnitudes are lengths, so there is 
 - Variable: subject (nominal) · nominal, no order
 - Used in: key-figure tiles, V02, V04, V05, V07, V09, chapter accents
 - Family: **categorical** · palette: **batlowS**
-- Colours: cars `#FACCFA` · stations `#818232` · price `#F19D6B` · trucks `#BE9035` · buses `#FDB4B4`
-- Contrast (card / page / alt): cars 9.82 / 11.34 / 10.36 · stations 3.37 / 3.89 / 3.55 · price 6.37 / 7.35 / 6.71 · trucks 4.71 / 5.44 / 4.97 · buses 8.05 / 9.3 / 8.49
-- Smallest distance between two colours (OKLab): 0.095
-- Engine ranking: batlowS 0.799, hawaiiS 0.779, batlowWS 0.738, naviaS 0.715
-- Our rule on top: Catalogue reduced to the colours that reach 3:1 on all three surfaces (card #292A4E, page #221E41, alt #20274C); 3 colour(s) of batlowS skipped before reaching 5: #011959 #215F61 #4C724D.
+- Original SCM9 colours: cars `#011959` · stations `#FACCFA` · price `#818232` · trucks `#F19D6B` · buses `#215F61`
+- Adjusted for the dark surface (original → adjusted, ΔL in OKLab): cars `#011959` → `#5378C0` (+0.328) · buses `#215F61` → `#468284` (+0.12)
+- Colours: cars `#5378C0` · stations `#FACCFA` · price `#818232` · trucks `#F19D6B` · buses `#468284`
+- Contrast (card / page / alt): cars 3.14 / 3.62 / 3.31 · stations 9.82 / 11.34 / 10.36 · price 3.37 / 3.89 / 3.55 · trucks 6.37 / 7.35 / 6.71 · buses 3.12 / 3.6 / 3.29
+- Smallest distance between two colours (OKLab): 0.108
+- Engine ranking: batlowS 1.068, naviaS 1.03, lapazS 1.016, glasgowS 1.01
+- Our rule on top: Chart Intelligence 1.0 (CH-05): 2 mark colour(s) of batlowS lightened to reach 3.1:1 on all three surfaces (card #292A4E, page #221E41, alt #20274C), hue kept: cars #011959 → #5378C0, buses #215F61 → #468284.
 - Why: Variables nominales sin orden natural → colores cualitativos, no un gradiente. Campo continuo o densidad variable → paleta continua. Se preservan los colores de SCM9; se extraen muestras sin modificar sus tonos originales.
 - Not colour alone (COL-07): Every category is also named in the chart (row label, legend or key); patterns mark states of the same variable.
 - Status: proposed — pending visual validation with real users, colour-vision simulation and print
@@ -41,12 +43,14 @@ No chart maps a continuous value to colour: magnitudes are lengths, so there is 
 
 - Variable: region (nominal) · nominal, no order
 - Used in: V03
-- Family: **categorical** · palette: **naviaS**
-- Colours: ap `#FCF4D9` · emea `#408A80` · am `#87C269`
-- Contrast (card / page / alt): ap 12.43 / 14.35 / 13.11 · emea 3.36 / 3.88 / 3.55 · am 6.48 / 7.48 / 6.83
-- Smallest distance between two colours (OKLab): 0.197
-- Engine ranking: naviaS 1.084, lapazS 1.016, actonS 1, batlowWS 1
-- Our rule on top: Catalogue reduced to the colours that reach 3:1 on all three surfaces (card #292A4E, page #221E41, alt #20274C); 1 colour(s) of naviaS skipped before reaching 3: #031327.
+- Family: **categorical** · palette: **hawaiiS**
+- Original SCM9 colours: ap `#8A0079` · emea `#AEE6FC` · am `#B0952D`
+- Adjusted for the dark surface (original → adjusted, ΔL in OKLab): ap `#8A0079` → `#C147AC` (+0.164)
+- Colours: ap `#C147AC` · emea `#AEE6FC` · am `#B0952D`
+- Contrast (card / page / alt): ap 3.1 / 3.58 / 3.27 · emea 10.11 / 11.67 / 10.66 · am 4.68 / 5.4 / 4.93
+- Smallest distance between two colours (OKLab): 0.277
+- Engine ranking: hawaiiS 1.108, naviaS 1.084, lapazS 1.072, glasgowS 1.069
+- Our rule on top: Chart Intelligence 1.0 (CH-05): 1 mark colour(s) of hawaiiS lightened to reach 3.1:1 on all three surfaces (card #292A4E, page #221E41, alt #20274C), hue kept: ap #8A0079 → #C147AC.
 - Why: Variables nominales sin orden natural → colores cualitativos, no un gradiente. Campo continuo o densidad variable → paleta continua. Se preservan los colores de SCM9; se extraen muestras sin modificar sus tonos originales.
 - Not colour alone (COL-07): Every category is also named in the chart (row label, legend or key); patterns mark states of the same variable.
 - Status: proposed — pending visual validation with real users, colour-vision simulation and print
@@ -57,12 +61,14 @@ No chart maps a continuous value to colour: magnitudes are lengths, so there is 
 
 - Variable: kind of milestone (nominal) · nominal, no order
 - Used in: V08
-- Family: **categorical** · palette: **hawaiiS**
-- Colours: exit `#AEE6FC` · bet `#B0952D`
-- Contrast (card / page / alt): exit 10.11 / 11.67 / 10.66 · bet 4.68 / 5.4 / 4.93
-- Smallest distance between two colours (OKLab): 0.277
-- Engine ranking: hawaiiS 1.108, glasgowS 1.096, lapazS 1.072, actonS 1
-- Our rule on top: Catalogue reduced to the colours that reach 3:1 on all three surfaces (card #292A4E, page #221E41, alt #20274C); 1 colour(s) of hawaiiS skipped before reaching 2: #8A0079.
+- Family: **categorical** · palette: **glasgowS**
+- Original SCM9 colours: exit `#361338` · bet `#DBD3FF`
+- Adjusted for the dark surface (original → adjusted, ΔL in OKLab): exit `#361338` → `#936B95` (+0.324)
+- Colours: exit `#936B95` · bet `#DBD3FF`
+- Contrast (card / page / alt): exit 3.11 / 3.59 / 3.28 · bet 9.62 / 11.11 / 10.15
+- Smallest distance between two colours (OKLab): 0.307
+- Engine ranking: glasgowS 1.096, naviaS 1.084, lapazS 1.072, actonS 1
+- Our rule on top: Chart Intelligence 1.0 (CH-05): 1 mark colour(s) of glasgowS lightened to reach 3.1:1 on all three surfaces (card #292A4E, page #221E41, alt #20274C), hue kept: exit #361338 → #936B95.
 - Why: Variables nominales sin orden natural → colores cualitativos, no un gradiente. Campo continuo o densidad variable → paleta continua. Se preservan los colores de SCM9; se extraen muestras sin modificar sus tonos originales.
 - Not colour alone (COL-07): Every category is also named in the chart (row label, legend or key); patterns mark states of the same variable.
 - Status: proposed — pending visual validation with real users, colour-vision simulation and print
@@ -98,12 +104,12 @@ No chart maps a continuous value to colour: magnitudes are lengths, so there is 
 **Question:** Did the figure rise or fall against the same period a year earlier?
 
 - Variable: change on a year earlier (signed %) · ordered with a declared centre: 0 = no change · centre 0
-- Used in: change chips (V02, V09), price cuts (V05)
+- Used in: change chips (V02, V09), deviation bars (V02 D), price cuts (V05)
 - Family: **diverging** · palette: **managua**
 - Colours: down `#EFB55E` · up `#78CDF0`
 - Contrast (card / page / alt): down 7.45 / 8.6 / 7.86 · up 7.68 / 8.86 / 8.1
-- Our rule on top: Engine first choice kept.
-- Sampled at: values −90 and +90 of a −100…+100 domain (5 % from each end); the size of the change is written in the chip, colour only gives the sign
+- Our rule on top: berlin was tried first (Chart Intelligence 1.0) and passed over. Passed over: berlin (no sample within 35 % of the ends reaches 4.5:1 and stays apart from the category and status colours).
+- Sampled at: 5.1 % from each end of the 256-step map (the nearest to the extreme that reads as text and is not a category or status colour); the size of the change is written in the chip, colour only gives the sign
 - Why: Referencia central semántica conocida → escala divergente. Selección manual explícita: managua. Campo continuo o densidad variable → paleta continua. Se preservan los colores de SCM9; se extraen muestras sin modificar sus tonos originales. Centre 0 is declared by the editor (no change): COL-03.
 - Not colour alone (COL-07): The sign is written (+/−) and the size is a number; colour is never the only channel. No “green is good / red is bad”: a fall in sales and a fall in a price are not the same thing.
 - Status: proposed — pending visual validation

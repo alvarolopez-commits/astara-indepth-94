@@ -604,7 +604,7 @@ body{caret-color:var(--accent);}
 .stk__k i{grid-column:1;grid-row:1;align-self:center;width:12px;height:12px;border-radius:3px;}
 .stk__k b{grid-column:2;font-size:var(--fs-kpi-m);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--txt);}
 .stk__k span{grid-column:2;font-size:var(--fs-small);color:var(--txt-sec);line-height:1.4;}
-.stk__k small{grid-column:2;font-size:12px;font-weight:600;color:var(--c-ap);margin-top:2px;}
+.stk__k small{grid-column:2;font-size:12px;font-weight:600;color:var(--txt-sec);margin-top:2px;}
 .stk__five{margin-top:var(--sp-5);display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap;padding:var(--sp-3) var(--sp-4);border:1px solid var(--border);border-radius:var(--r-sm);background:var(--bg);}
 .stk__five b{font-size:var(--fs-kpi-l);font-weight:700;letter-spacing:-.035em;line-height:1;color:var(--c-stations);}
 .stk__five>span:last-child{font-size:var(--fs-small);color:var(--txt-sec);line-height:1.45;flex:1 1 220px;}
@@ -633,7 +633,7 @@ body{caret-color:var(--accent);}
 .cut span{font-size:var(--fs-small);color:var(--txt-sec);}
 .calc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:14px;font-weight:600;color:var(--txt);font-variant-numeric:lining-nums tabular-nums;}
 .calc__op{color:var(--txt-muted);}
-.calc__r{color:var(--c-cars);font-weight:700;}
+.calc__r{color:var(--txt);font-weight:700;}
 .doe{list-style:none;display:grid;gap:var(--sp-2);margin-top:var(--sp-1);}
 .doe li{display:grid;grid-template-columns:minmax(84px,auto) minmax(0,1fr);gap:var(--sp-3);align-items:baseline;border-top:1px solid var(--border);padding-top:var(--sp-2);}
 .doe__v{font-size:var(--fs-kpi-s);font-weight:700;color:var(--txt-sec);white-space:nowrap;font-variant-numeric:lining-nums tabular-nums;}
@@ -687,7 +687,7 @@ body{caret-color:var(--accent);}
 .ln__h i{width:10px;height:10px;border-radius:50%;background:var(--lc);flex:none;}
 .ln__l{list-style:none;}
 .ln__i{display:grid;grid-template-columns:96px minmax(0,1fr);gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:1px solid var(--border);}
-.ln__d{font-size:12px;font-weight:700;line-height:1.45;color:var(--lc);font-variant-numeric:lining-nums tabular-nums;}
+.ln__d{font-size:12px;font-weight:700;line-height:1.45;color:var(--txt-sec);font-variant-numeric:lining-nums tabular-nums;}
 .ln__b b{display:block;font-size:var(--fs-card);color:var(--txt);margin-bottom:2px;}
 .ln__b>span{display:block;font-size:var(--fs-small);line-height:1.55;color:var(--txt-sec);}
 .ln__nc{display:inline-block;margin-top:6px;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.03em;padding:2px 8px;border:1px dashed var(--s-warning);color:var(--s-warning);border-radius:10px;}
@@ -763,3 +763,9 @@ main:focus{outline:none;}
 .dtab__n{font-size:12px;line-height:1.55;color:var(--txt-muted);margin-top:8px;}
 @media(max-width:899px),(pointer:coarse){.dtab summary{min-height:44px;}}
 @media(max-width:639px){.dtab th,.dtab td{padding:7px 6px;}.dtab table{font-size:12px;}}
+
+/* V02 D — deviations around a declared centre (Chart Intelligence 1.0, “Desviación”): zero is drawn, signs are written */
+.dvg{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-sec);margin:var(--sp-3) 0 2px;}
+.dvg:first-child{margin-top:var(--sp-2);}
+.dv__fill{position:absolute;top:4px;height:16px;border-radius:3px;}
+.dv__note{font-size:12px;line-height:1.55;color:var(--txt-muted);margin-top:var(--sp-2);}

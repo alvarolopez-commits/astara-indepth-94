@@ -87,6 +87,25 @@ function renderCars(){
     C.C.map((d,i) => row(i, d, X5, i === 0 ? 'var(--n-series)' : (d.id === 'C5' ? 'var(--hatch-cars)' : 'var(--c-cars)'), d.id === 'C5' ? t('chart.car.commercial') : '', i === 1 ? 'row--sep' : '')).join('') + '</div>' + axis(T5, X5, f8);
 }
 
+/* V02 D — the same changes around zero: right = more than a year earlier, left = fewer; the centre (0 = no change) is declared and drawn */
+function renderDeviations(){
+  const C = DATA.cars, X = v => (v + 100) / 275, T = [-100, -50, 0, 50, 100, 150], sg = v => v === 0 ? '0' : (v < 0 ? '−' : '+') + Math.abs(v);
+  const groups = [[t('chart.car.devA'), [C.B[0], C.B[1]]], [t('chart.car.devB'), [C.C[1], C.C[2], C.C[3], C.C[4]]]];
+  const all = groups.flatMap(g => g[1]);
+  const grd = grid([...T.filter(v => v !== 0).map(v => [X(v)]), [X(0), 'var(--txt-sec)', 2]]);
+  let h = `<div class="rows lr--wide" style="--grid:${grd}" role="img" aria-label="${esc(tp('chart.car.ariaD') + ' ' + all.map(d => `${tp(d.label)} ${pct(d.delta)}`).join('; '))}">`;
+  let i = 0;
+  for(const [title, list] of groups){
+    h += `<div class="dvg">${title}</div>`;
+    for(const d of list){
+      const v = d.delta, lo = Math.min(0, v), hi = Math.max(0, v);
+      const bar = `<span class="dv__fill" style="--i:${i++};left:${at(X(lo))};width:calc((100% - ${LAB})*${X(hi) - X(lo)});background:${v < 0 ? 'var(--c-down)' : 'var(--c-up)'}"></span>` + valLabel(1, dl(v));
+      h += lrow(t(d.label), '', bar);
+    }
+  }
+  $('v02d').innerHTML = h + '</div>' + axis(T, X, sg) + `<p class="dv__note">${t('chart.car.devNote')}</p>`;
+}
+
 /* ================= V03 — world stations at the end of 2024 ================= */
 function renderStW(){
   const W = DATA.stw, COL = {AP:'var(--c-ap)', EMEA:'var(--c-emea)', AM:'var(--c-am)'};
@@ -231,7 +250,7 @@ function renderTables(){
 
 /* ================= render, language switch ================= */
 function renderAll(){
-  renderCars(); renderStW(); renderStC(); renderPrices(); renderTrucks(); renderBuses(); renderExits(); renderChina(); renderTables();
+  renderCars(); renderDeviations(); renderStW(); renderStC(); renderPrices(); renderTrucks(); renderBuses(); renderExits(); renderChina(); renderTables();
 }
 function applyText(){
   document.querySelectorAll('[data-i18n]').forEach(el => {

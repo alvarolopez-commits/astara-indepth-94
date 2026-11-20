@@ -2,7 +2,9 @@
 /* Colour decisions for In Depth #94, made with the Color Intelligence Engine (Design System 1.1, BRAND/SISTEMA 01/COLOR).
    Run from the project folder:   node _build/color_decisions94.js
    Reads the surfaces from style94.css, asks vendor/color-engine.js (palettes: Scientific Colour Maps 9.0, F. Crameri, MIT) for a recommendation per
-   variable, applies one rule of our own on top (a mark must reach 3:1 on every surface it sits on, WCAG 1.4.11), and writes
+   variable and follows the Chart Intelligence 1.0 study (BRAND/SISTEMA 01/COLOR/CHARTS): a categorical mark is *adjusted* towards a visible lightness
+   (≥ 3.1:1 on every surface it sits on) keeping its hue, and the original and the adjusted HEX are both recorded (CH-05); the dark pair for
+   deviations is berlin (CH-03). Writes
      _build/color94.json      tokens, the CSS block the build injects, and one auditable decision per variable (COL-10)
      _build/COLOR_DECISIONS.md the same decisions, readable
    Nothing here certifies WCAG or colour-vision accessibility: the engine says so, and so do the notes of every decision. */
@@ -15,7 +17,7 @@ const CE = require(path.join(V, 'color-engine.js'));
 const css = fs.readFileSync(path.join(HERE, 'style94.css'), 'utf8');
 const tok = n => { const m = css.match(new RegExp('--' + n + ':\\s*(#[0-9A-Fa-f]{6})')); if (!m) throw Error('token not found: ' + n); return m[1].toUpperCase(); };
 const SURF = { card: tok('bg-card'), page: tok('bg'), alt: tok('bg-alt') };   // figure frame · cards and tiles inside it · alternate sections
-const MARK_MIN = 3, TEXT_MIN = 4.5;                                            // WCAG 2.2: 1.4.11 non-text contrast, 1.4.3 text contrast
+const MARK_MIN = 3.1, TEXT_MIN = 4.5;                                          // WCAG 2.2: 1.4.11 non-text contrast, 1.4.3 text contrast
 const NEAR = 0.065;                                                             // the engine’s own “colours too close” threshold (OKLab distance)
 const ratio = (c, bg) => CE.contrast(c, bg);
 const worst = c => Math.min(...Object.values(SURF).map(s => ratio(c, s)));
@@ -24,28 +26,45 @@ const contrastRow = c => Object.fromEntries(Object.entries(SURF).map(([k, s]) =>
 const dist = (a, b) => Math.hypot(...CE.oklab(a).map((v, i) => v - CE.oklab(b)[i]));
 const minPair = cols => { let m = 9; for (let i = 0; i < cols.length; i++) for (let j = i + 1; j < cols.length; j++) m = Math.min(m, dist(cols[i], cols[j])); return cols.length > 1 ? +m.toFixed(3) : null; };
 const blend = (fg, bg, a) => '#' + [0, 2, 4].map(i => Math.round(parseInt(fg.slice(1 + i, 3 + i), 16) * a + parseInt(bg.slice(1 + i, 3 + i), 16) * (1 - a)).toString(16).padStart(2, '0')).join('').toUpperCase();
+const toLin = v => v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
+const fromOklab = ([L, a, b]) => { const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3, m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3, s = (L - 0.0894841775 * a - 1.2914855480 * b) ** 3;
+  return [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s]; };
+const toHex = lin => '#' + lin.map(v => Math.round(Math.min(1, Math.max(0, toLin(Math.min(1, Math.max(0, v))))) * 255).toString(16).padStart(2, '0')).join('').toUpperCase();
+/* raise the lightness of a mark (OKLab L) until it reaches MARK_MIN on every surface; hue is kept, chroma is reduced only if the colour leaves the sRGB gamut */
+function adjust(hex) {
+  if (worst(hex) >= MARK_MIN) return { hex, adjusted: false };
+  const [L, a, b] = CE.oklab(hex);
+  for (let L2 = L; L2 <= 0.99; L2 += 0.004) {
+    let k = 1, lin;
+    for (; k > 0; k -= 0.02) { lin = fromOklab([L2, a * k, b * k]); if (lin.every(v => v >= -1e-4 && v <= 1 + 1e-4)) break; }
+    const h = toHex(lin);
+    if (worst(h) >= MARK_MIN) return { hex: h, adjusted: true, from: hex, deltaL: +(L2 - L).toFixed(3), chromaKept: +k.toFixed(2) };
+  }
+  throw Error('cannot adjust ' + hex);
+}
 const generic = w => /exclusivamente mediante color/.test(w);
 
 const decisions = [], T = {};
 
 /* ---- 1. DATA · categorical: three nominal variables, each with its own palette so that two variables never share a colour ---- */
-const POOL = {};   // categorical lists reduced to the colours that reach 3:1 on every surface (order kept)
-for (const k of Object.keys(CAT.categorical)) POOL[k] = CAT.categorical[k].filter(c => worst(c) >= MARK_MIN);
+const POOL = { ...CAT.categorical };   // categorical lists as the catalogue has them: the original order and hues are kept
 
 function categorical(id, question, variable, domain, used) {
   const spec = { role: 'data', categories: domain, categoryDomain: domain, theme: 'dark', surface: SURF.card, form: 'bar' };
   const r = CE.recommend(spec, { ...CAT, categorical: POOL });
-  let kept = 0; const skipped = [];
-  for (const c of CAT.categorical[r.paletteId]) { if (kept === domain.length) break; if (worst(c) >= MARK_MIN) kept++; else skipped.push(c); }
-  const colors = Object.fromEntries(domain.map((d, i) => [d, r.colors[i]]));
+  const adj = r.colors.slice(0, domain.length).map(adjust);
+  const colors = Object.fromEntries(domain.map((d, i) => [d, adj[i].hex]));
+  const adjustments = adj.map((x, i) => x.adjusted ? { category: domain[i], original: x.from, adjusted: x.hex, deltaL: x.deltaL, chromaKept: x.chromaKept } : null).filter(Boolean);
   for (const d of domain) T['c-' + d] = colors[d];
   delete POOL[r.paletteId];   // the next variable gets another palette
+  const pair = minPair(Object.values(colors));
   decisions.push({
     id, role: 'data', family: r.family, question, variable, type: 'nominal, no order', categoryDomain: domain, usedIn: used,
-    paletteId: r.paletteId, candidates: r.candidates, colors, contrast: Object.fromEntries(domain.map(d => [d, contrastRow(colors[d])])),
-    minPairDistanceOKLab: minPair(r.colors),
-    reasons: r.reasons, warnings: r.warnings.filter(w => !generic(w)),
-    ownRule: `Catalogue reduced to the colours that reach ${MARK_MIN}:1 on all three surfaces (${Object.entries(SURF).map(([k, v]) => k + ' ' + v).join(', ')}); ${skipped.length} colour(s) of ${r.paletteId} skipped before reaching ${domain.length}: ${skipped.join(' ') || 'none'}.`,
+    paletteId: r.paletteId, candidates: r.candidates, colors, originalColors: Object.fromEntries(domain.map((d, i) => [d, r.colors[i]])),
+    adjustments, contrast: Object.fromEntries(domain.map(d => [d, contrastRow(colors[d])])),
+    minPairDistanceOKLab: pair,
+    reasons: r.reasons, warnings: [...r.warnings.filter(w => !generic(w)), ...(pair !== null && pair < NEAR ? [`After the adjustment two colours are closer than ${NEAR} (OKLab): ${pair}`] : [])],
+    ownRule: adjustments.length ? `Chart Intelligence 1.0 (CH-05): ${adjustments.length} mark colour(s) of ${r.paletteId} lightened to reach ${MARK_MIN}:1 on all three surfaces (${Object.entries(SURF).map(([k, v]) => k + ' ' + v).join(', ')}), hue kept: ${adjustments.map(x => `${x.category} ${x.original} → ${x.adjusted}`).join(', ')}.` : `All colours of ${r.paletteId} already reach ${MARK_MIN}:1 on the three surfaces; none adjusted.`,
     redundantCoding: 'Every category is also named in the chart (row label, legend or key); patterns mark states of the same variable.',
     status: 'proposed — pending visual validation with real users, colour-vision simulation and print',
     source: r.source, validators: r.validators,
@@ -87,28 +106,37 @@ decisions.push({
 const names = CAT.types.diverging;
 const ranking = names.map(n => ({ id: n, score: CE.quality(n, 'diverging', 'dark', 'bar', SURF.card, CAT, 0).score })).sort((a, b) => b.score - a.score);
 const spec = { role: 'data', center: 0, values: [-100, 0, 100], domain: [-100, 100], theme: 'dark', surface: SURF.card, form: 'bar', sensitivity: 'normal' };
-const ends = id => { const g = CAT.palettes[id]; return { down: g[13], up: g[242] }; };            // 5 % from each extreme
 const apart = (c, others) => Math.min(...others.map(o => dist(c, o)));
-const rejected = []; let chosen = null;
-for (const cand of ranking) {
-  const e = ends(cand.id), why = [];
-  if (Math.min(worst(e.down), worst(e.up)) < TEXT_MIN) why.push('end colours below 4.5:1 for text on a surface');
-  const near = apart(e.down, [...DATA_COLORS, ...Object.values(sem.colors)]) < NEAR ? e.down : (apart(e.up, [...DATA_COLORS, ...Object.values(sem.colors)]) < NEAR ? e.up : null);
-  if (near) why.push(`end colour ${near} is within ΔE(OKLab) ${NEAR} of a category or status colour`);
-  if (why.length) rejected.push({ id: cand.id, score: +cand.score.toFixed(3), why }); else { chosen = cand; break; }
+const others = () => [...DATA_COLORS, ...Object.values(sem.colors)];
+/* sample a diverging palette at the same distance from both ends: the nearest to the extreme that reads as text (4.5:1) and is not a category or status colour */
+function sampleEnds(id) {
+  const g = CAT.palettes[id], why = [];
+  for (let i = 13; i <= 90; i++) {
+    const down = g[i], up = g[255 - i];
+    const onChip = c => Math.min(...Object.values(SURF).map(sf => ratio(c, blend(c, sf, .14))));   // the text sits on a 14 % tint of its own colour
+    if (Math.min(worst(down), worst(up), onChip(down), onChip(up)) >= TEXT_MIN && apart(down, others()) >= NEAR && apart(up, others()) >= NEAR) return { down, up, index: i, why };
+  }
+  return { why: ['no sample within 35 % of the ends reaches 4.5:1 and stays apart from the category and status colours'] };
+}
+const rejected = []; let chosen = null, sampled = null;
+const PAIR = 'berlin';   // Chart Intelligence 1.0, CH-03: dark pair for deviations (centre dark)
+const order = [ranking.find(x => x.id === PAIR), ...ranking.filter(x => x.id !== PAIR)];
+for (const cand of order) {
+  const e = sampleEnds(cand.id);
+  if (e.why.length) rejected.push({ id: cand.id, score: +cand.score.toFixed(3), why: e.why }); else { chosen = cand; sampled = e; break; }
 }
 if (!chosen) { console.log(JSON.stringify(rejected, null, 1)); throw Error("no diverging palette passes the checks"); }
 const dr = CE.recommend({ ...spec, forcePalette: chosen.id }, CAT);
-const down = CE.colorFor(dr, -90), up = CE.colorFor(dr, 90);
+const down = sampled.down, up = sampled.up;
 T['c-down'] = down; T['c-up'] = up;
 decisions.push({
   id: 'COL-DATA-CHANGE', role: 'data', family: 'diverging', question: 'Did the figure rise or fall against the same period a year earlier?', variable: 'change on a year earlier (signed %)',
-  type: 'ordered with a declared centre: 0 = no change', center: 0, usedIn: 'change chips (V02, V09), price cuts (V05)',
-  paletteId: chosen.id, engineFirstChoice: ranking[0].id, rejectedBefore: rejected,
-  colors: { down, up }, contrast: { down: contrastRow(down), up: contrastRow(up) }, sampledAt: 'values −90 and +90 of a −100…+100 domain (5 % from each end); the size of the change is written in the chip, colour only gives the sign',
+  type: 'ordered with a declared centre: 0 = no change', center: 0, usedIn: 'change chips (V02, V09), deviation bars (V02 D), price cuts (V05)',
+  paletteId: chosen.id, engineFirstChoice: ranking[0].id, chartModulePair: PAIR, rejectedBefore: rejected,
+  colors: { down, up }, contrast: { down: contrastRow(down), up: contrastRow(up) }, sampledAt: `${(sampled.index / 255 * 100).toFixed(1)} % from each end of the 256-step map (the nearest to the extreme that reads as text and is not a category or status colour); the size of the change is written in the chip, colour only gives the sign`,
   reasons: [...dr.reasons, 'Centre 0 is declared by the editor (no change): COL-03.'],
   warnings: dr.warnings.filter(w => !generic(w)),
-  ownRule: rejected.length ? `Engine ranking: ${ranking.slice(0, 4).map(x => x.id + ' ' + x.score.toFixed(3)).join(', ')}. Palettes before ${chosen.id} were passed over: ${rejected.map(x => x.id + ' (' + x.why.join('; ') + ')').join(' · ')}.` : 'Engine first choice kept.',
+  ownRule: (chosen.id === PAIR ? `Chart Intelligence 1.0 (CH-03) names ${PAIR} (centre dark) as the dark pair for deviations; the engine’s own ranking was ${ranking.slice(0, 4).map(x => x.id + ' ' + x.score.toFixed(3)).join(', ')}.` : `${PAIR} was tried first (Chart Intelligence 1.0) and passed over.`) + (rejected.length ? ` Passed over: ${rejected.map(x => x.id + ' (' + x.why.join('; ') + ')').join(' · ')}.` : ''),
   redundantCoding: 'The sign is written (+/−) and the size is a number; colour is never the only channel. No “green is good / red is bad”: a fall in sales and a fall in a price are not the same thing.',
   status: 'proposed — pending visual validation', source: dr.source, validators: dr.validators,
 });
@@ -153,6 +181,8 @@ for (const d of decisions) {
   if (d.variable) md.push(`- Variable: ${d.variable}${d.type ? ' · ' + d.type : ''}${d.center !== undefined ? ' · centre ' + d.center : ''}`);
   if (d.usedIn) md.push(`- Used in: ${d.usedIn}`);
   if (d.family && d.role !== 'check') md.push(`- Family: **${d.family}** · palette: **${d.paletteId}**${d.engineFirstChoice && d.engineFirstChoice !== d.paletteId ? ` (engine’s first choice was ${d.engineFirstChoice})` : ''}`);
+  if (d.originalColors) md.push(`- Original SCM9 colours: ${Object.entries(d.originalColors).map(([k, v]) => `${k} \`${v}\``).join(' · ')}`);
+  if (d.adjustments && d.adjustments.length) md.push(`- Adjusted for the dark surface (original → adjusted, ΔL in OKLab): ${d.adjustments.map(x => `${x.category} \`${x.original}\` → \`${x.adjusted}\` (+${x.deltaL})`).join(' · ')}`);
   if (d.colors) md.push(`- Colours: ${Object.entries(d.colors).map(([k, v]) => `${k} \`${v}\``).join(' · ')}`);
   if (d.contrast) md.push(`- Contrast (card / page / alt): ${Object.entries(d.contrast).map(([k, v]) => `${k} ${v.card} / ${v.page} / ${v.alt}`).join(' · ')}`);
   if (d.minPairDistanceOKLab !== undefined) md.push(`- Smallest distance between two colours (OKLab): ${d.minPairDistanceOKLab}`);
